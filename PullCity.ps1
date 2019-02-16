@@ -23,5 +23,5 @@ else {
 
 if ($city) {
     #Return city found
-    $ubs | Where-Object { $_.dsc_cidade -imatch "$city*" } | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro
+    $ubs | Where-Object { $_.dsc_cidade -imatch "$city.*" } | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro
 }
