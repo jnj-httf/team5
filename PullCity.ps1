@@ -21,7 +21,18 @@ else {
     $ubs | ConvertTo-Json | Out-File -Encoding utf8 $path
 }
 
+#Function definition to remove accents and multiple spaces from string
+function Remove-Accents {
+    param (
+        [string]$s
+    )
+    process {
+        $s -ireplace "[áã]", "a" -ireplace "[éê]", "e" -ireplace "[í]", "i" -ireplace "[óôõ]", "0" -ireplace "[ú]", "u" -ireplace "\s+", " "
+    }
+}
+
+
 if ($city) {
     #Return city found
-    $ubs | Where-Object { $_.dsc_cidade -imatch "$city.*" } | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro
+    $ubs | Where-Object { (Remove-Accents -s $_.dsc_cidade) -imatch "$(Remove-Accents -s $city).*" } | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro
 }

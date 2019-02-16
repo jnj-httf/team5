@@ -42,6 +42,8 @@ if ($lat -and $lon) {
     [double]$menor_distancia = 2000 # Set a large number
     foreach ($u in $ubs) {
         [double]$distancia = Get-Distance -lat1 $lat -lon1 $lon -lat2 $u.vlr_latitude -lon2 $u.vlr_longitude
+
+        #Test if ubs distance is lower
         if ($distancia -le $menor_distancia) {
             $menor_distancia = $distancia
             $ubs_mais_proxima = $u
