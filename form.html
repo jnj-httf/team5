@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Hackathon JnJ</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2>Buscar UBS mais próxima a vocÊ</h2>
-  <form action="#">
+  <form action="#" method="post">
     <div class="form-group">
       <label>Latitude:</label>
       <input type="text" class="form-control" id="latitude" placeholder="Digite a Latitude" name="latitude">
@@ -25,12 +25,12 @@
   </form>
   
   <p id="resp_ubs_distancia"></p>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.7321824200594!2d-46.01561208535351!3d-23.28917915748141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc3328dca530f3%3A0x887b12d36cdc1d42!2s12334%2C+Jacare%C3%AD+-+SP!5e0!3m2!1spt-BR!2sbr!4v1550331354901" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.7321824200594!2d-46.01561208535351!3d-23.28917915748141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc3328dca530f3%3A0x887b12d36cdc1d42!2s12334%2C+SJC+-+SP!5e0!3m2!1spt-BR!2sbr!4v1550331354901" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 
 
 
-  <div class="container">
+  <!-- <div class="container">
     <h2>Selecione uma Cidade</h2>                                         
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
@@ -40,8 +40,21 @@
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CIDADE</a></li>
       </ul>
     </div>
-  </div>
+  </div> -->
 
+  <div class="container">
+    <h2>Buscar UBS de sua cidade</h2>
+    <form action="#" method="post">
+      <div class="form-group">
+        <label>Cidade:</label>
+        <input type="text" class="form-control" id="cidade" placeholder="Digite a Cidade" name="latitude">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    
+    <p id="resp_ubs_distancia"></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.7321824200594!2d-46.01561208535351!3d-23.28917915748141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc3328dca530f3%3A0x887b12d36cdc1d42!2s12334%2C+SJC+-+SP!5e0!3m2!1spt-BR!2sbr!4v1550331354901" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
 
 </body>
 </html>
