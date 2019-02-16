@@ -4,11 +4,12 @@
 
    
 
-<asp:gridview id="UBSGridView" 
+<asp:gridview 
+  id="ubsGridView" 
   autogeneratecolumns="False"
   emptydatatext="No data available." 
   allowpaging="True" 
-  runat="server" DataKeyNames="cod_munic"
+  runat="server" DataKeyNames="co_cep"
     >
     <Columns>
         <asp:BoundField DataField="dsc_cidade" HeaderText="Cidade" 
@@ -20,6 +21,7 @@
         <asp:BoundField DataField="LastName" HeaderText="LastName" 
             SortExpression="LastName" />--%>
     </Columns>
+   
 </asp:gridview>
 
 </asp:Content>

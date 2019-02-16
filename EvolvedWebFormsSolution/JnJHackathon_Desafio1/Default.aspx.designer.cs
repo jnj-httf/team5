@@ -13,12 +13,12 @@ namespace JnJHackathon_Desafio1 {
     public partial class _Default {
         
         /// <summary>
-        /// UBSGridView control.
+        /// ubsGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView UBSGridView;
+        protected global::System.Web.UI.WebControls.GridView ubsGridView;
     }
 }
