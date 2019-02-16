@@ -1,5 +1,6 @@
 ﻿param (
-    [string]$city
+    [string]$city,
+    [switch]$fragment
 )
 [string]$path = "$env:TEMP\ubs.json"
 
@@ -34,5 +35,5 @@ function Remove-Accents {
 
 if ($city) {
     #Return city found
-    $ubs | Where-Object { (Remove-Accents -s $_.dsc_cidade) -imatch "$(Remove-Accents -s $city).*" } | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro
+    $ubs | Where-Object { (Remove-Accents -s $_.dsc_cidade) -imatch "$(Remove-Accents -s $city).*" } | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro -Fragment:$fragment.IsPresent
 }
