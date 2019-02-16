@@ -1,6 +1,7 @@
 ﻿param (
     [double]$lat,
     [double]$lon,
+    [string]$outputPath,
     [switch]$fragment
 )
 [string]$path = "$env:TEMP\ubs.json"
@@ -52,6 +53,12 @@ if ($lat -and $lon) {
     }
     #Return city found
     if ($ubs_mais_proxima) {
-        $ubs_mais_proxima | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro -Fragment:$fragment.IsPresent
+        $output = $ubs_mais_proxima | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro -Fragment:$fragment.IsPresent
+        if ($outputPath) {
+            $output | Out-File -FilePath $outputPath
+        }
+        else {
+            $output
+        }
     }
 }
