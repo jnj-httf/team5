@@ -1,0 +1,8 @@
+Existe uma versão com uma arquitetura mais robusta para o desafio na pasta "EvolvedWebFormsSolution"
+
+A solution não está finalizada (falta front-end/api).
+
+Ao rodar a primeira vez, é feita uma carga no banco de todos os registros em banco local e demora mais de 10 minutos
+
+
+Favor analisar o código implementado (Services, ORM, Repository, Model, Migration e comentários para futuras iterações)
