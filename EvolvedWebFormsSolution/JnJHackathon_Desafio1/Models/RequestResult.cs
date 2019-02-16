@@ -7,6 +7,6 @@ namespace JnJHackathon_Desafio1.Models
 {
     public class RequestResult
     {
-        ICollection<UBS> records { get; set; }
+        public IEnumerable<UBS> records { get; set; }
     }
 }
