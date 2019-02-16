@@ -38,7 +38,7 @@ if ($city) {
     #Return city found
     $output = $ubs | Where-Object { (Remove-Accents -s $_.dsc_cidade) -imatch "$(Remove-Accents -s $city).*" } | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro -Fragment:$fragment.IsPresent
     if ($outputPath) {
-        $output | Out-File -FilePath $outputPath
+        $output | Out-File -FilePath $outputPath -Force
     }
     else {
         $output

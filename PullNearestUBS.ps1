@@ -55,7 +55,7 @@ if ($lat -and $lon) {
     if ($ubs_mais_proxima) {
         $output = $ubs_mais_proxima | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro -Fragment:$fragment.IsPresent
         if ($outputPath) {
-            $output | Out-File -FilePath $outputPath
+            $output | Out-File -FilePath $outputPath -Force
         }
         else {
             $output
