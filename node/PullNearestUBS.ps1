@@ -1,6 +1,8 @@
 ﻿param (
     [double]$lat,
-    [double]$lon
+    [double]$lon,
+    [string]$outputPath,
+    [switch]$fragment
 )
 [string]$path = "$env:TEMP\ubs.json"
 
@@ -42,6 +44,8 @@ if ($lat -and $lon) {
     [double]$menor_distancia = 2000 # Set a large number
     foreach ($u in $ubs) {
         [double]$distancia = Get-Distance -lat1 $lat -lon1 $lon -lat2 $u.vlr_latitude -lon2 $u.vlr_longitude
+
+        #Test if ubs distance is lower
         if ($distancia -le $menor_distancia) {
             $menor_distancia = $distancia
             $ubs_mais_proxima = $u
@@ -49,6 +53,12 @@ if ($lat -and $lon) {
     }
     #Return city found
     if ($ubs_mais_proxima) {
-        $ubs_mais_proxima | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro
+        $output = $ubs_mais_proxima | ConvertTo-Html -Property dsc_cidade, nom_estab, dsc_endereco, dsc_bairro -Fragment:$fragment.IsPresent
+        if ($outputPath) {
+            $output | Out-File -FilePath $outputPath -Force
+        }
+        else {
+            $output
+        }
     }
 }

@@ -7,10 +7,11 @@ const fs = require('fs');
 app.use(express.static('node'));
 
 let getCity = function (city) {
-    child = spawn("powershell.exe", ["C:\\Users\\enry_\\Desktop\\JnJ\\jnj-app\\src\\node\\PullCity.ps1 -city "+city+" "]);
+    console.log('running getcity');
+    child = spawn("powershell.exe", ["C:\\Users\\enry_\\Desktop\\JnJ\\jnj-app\\src\\node\\PullCity.ps1 -city "+city.replace('+'," ")+" -outputpath \"C:\\Users\\enry_\\Desktop\\JnJ\\jnj-app\\src\\node\\outputCity.html\" "]);
 
 
-    let onetime = true;
+    /* let onetime = true;
 
     child.stdout.on("data", function (data) {
         console.log("Powershell Data: " + data);
@@ -23,14 +24,15 @@ let getCity = function (city) {
                 return console.log(err);
             }
         });
-    });
+    });*/
     child.stdin.end(); //end input
 }
 
 let getNearest = function(latitude, longitude) {
-    child = spawn("powershell.exe", ["C:\\Users\\enry_\\Desktop\\JnJ\\jnj-app\\src\\node\\PullNearestUBS.ps1 -lat "+latitude+" -lon "+longitude]);
-
-    let onetime = true;
+    console.log("running getnearest");
+    child = spawn("powershell.exe", ["C:\\Users\\enry_\\Desktop\\JnJ\\jnj-app\\src\\node\\PullNearestUBS.ps1 -lat "+latitude+" -lon "+longitude+" -outputpath C:\\Users\\enry_\\Desktop\\JnJ\\jnj-app\\src\\node\\outputNearest.html"]);
+    
+    /* let onetime = true;
 
     child.stdout.on("data", function (data) {
         console.log("Powershell Data: " + data);
@@ -45,7 +47,7 @@ let getNearest = function(latitude, longitude) {
             }
         });
     });
-    child.stdin.end(); //end input
+    child.stdin.end(); //end input */
 }
 
 
@@ -54,7 +56,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/city', function (req, res) {
-    getCity(req.query.cidade);
+    getCity(req.query.city);
   //res.send('Hello World!');
 });
 
@@ -63,6 +65,6 @@ app.get('/nearest', function (req, res) {
   //res.send('Hello World!');
 });
 
-app.listen(3006, function () {
+app.listen(3007, function () {
   console.log('Example app listening on port 3000!');
 });
