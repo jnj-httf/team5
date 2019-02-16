@@ -35,4 +35,4 @@ foreach ($u in $ubs) {
         $ubs_mais_proxima = $u
     }
 }
-Write-Output $ubs_mais_proxima
+$ubs_mais_proxima
