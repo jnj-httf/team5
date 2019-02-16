@@ -1,6 +1,6 @@
 ﻿param (
-    [double]$lat = -5.89795231819139,
-    [double]$lon = -44.8160004615773
+    [double]$lat,
+    [double]$lon
 )
 [string]$path = "$env:TEMP\ubs.json"
 
@@ -9,14 +9,17 @@ if ((Test-Path -Path $path)) {
     $ubs = Get-Content -Path $path | ConvertFrom-Json
 }
 else {
+    Write-Error "Cache file not found. Building it" -ErrorAction Continue
+
     [int]$pages = (Invoke-RestMethod -Uri "http://api-ldc-hackathon.herokuapp.com/api/ubs/" | Select-Object -ExpandProperty _metadata | Select-Object -ExpandProperty page) -split "/" | Select-Object -Last 1
 
-    Invoke-Command {
+    $ubs = Invoke-Command {
          for ($i = 1; $i -le $pages; $i++) {
             $ubs = Invoke-RestMethod -Uri "http://api-ldc-hackathon.herokuapp.com/api/ubs/$i/"
             $ubs.records
          }
-    } | ConvertTo-Json | Out-File -Encoding utf8 $path
+    }
+    $ubs | ConvertTo-Json | Out-File -Encoding utf8 $path
 }
 
 #Function definition to get distance between two points
