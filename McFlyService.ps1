@@ -53,6 +53,9 @@ Start-PSWebServer -ProcessRequest {
         }
 
 
+        # 
+        # "Se regra de três não resolver, tente Pitágoras" grigt
+        # 
         #Function definition to get distance between two points
         function Get-Distance {
             param (
